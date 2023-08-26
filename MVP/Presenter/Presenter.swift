@@ -5,22 +5,20 @@
 //  Created by Alexey Manankov on 26.08.2023.
 //
 
-protocol GreetingPresenter {
-    init(view: GreetingView, person: Person)
+protocol PresenterProtocol: AnyObject {
     func showGreeting()
 }
 
-class Presenter: GreetingPresenter {
-    unowned let view: GreetingView
-    let person: Person
+class Presenter: PresenterProtocol {
     
-    required init(view: GreetingView, person: Person) {
-        self.view = view
-        self.person = person
-    }
+    var view: GreetingViewProtocol?
+    var model: Person?
     
     func showGreeting() {
-        let greeting = "Hello" + " " + self.person.firstName + " " + self.person.lastName
-        self.view.setGreeting(greeting)
+        print("Fuck the system")
+        guard let firstName = self.model?.firstName else {return}
+        guard let lastName = self.model?.lastName else {return}
+        let greeting = "Hello \(firstName) \(lastName)"
+        self.view?.setGreeting(greeting: greeting)
     }
 }
