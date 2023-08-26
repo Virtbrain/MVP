@@ -11,11 +11,10 @@ protocol PresenterProtocol: AnyObject {
 
 class Presenter: PresenterProtocol {
     
-    var view: GreetingViewProtocol?
+    weak var view: GreetingViewProtocol?
     var model: Person?
     
     func showGreeting() {
-        print("Fuck the system")
         guard let firstName = self.model?.firstName else {return}
         guard let lastName = self.model?.lastName else {return}
         let greeting = "Hello \(firstName) \(lastName)"

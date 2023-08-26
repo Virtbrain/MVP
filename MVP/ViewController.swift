@@ -13,7 +13,7 @@ protocol GreetingViewProtocol: AnyObject {
 
 class GreetingView: UIViewController {
     
-    weak var presenter: PresenterProtocol?
+var presenter: PresenterProtocol?
     
     let showGreetingButton = UIButton()
     let greetingLabel = UILabel()
